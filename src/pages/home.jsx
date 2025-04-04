@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Home() {
+    const navigate = useNavigate();
     return (
         <>
             <main className="w-full lg:max-w-[80%] mx-auto">
@@ -20,9 +23,9 @@ export default function Home() {
                         <p className="text-xl text-[#056791] mt-3 ">Step 5: Review and Submit</p>
                         <p className=" mt-3 ">You can review all information entered before submitting your complaint to CMS. Once the complaint is submitted, CMS will review all information and respond to your complaint.</p>
                         <p className=" mt-3 ">Click the Register Complaint button below to begin filing your complaint.</p>
-                        <div className="flex lg:justify-start justify-center mt-8">
+                        <div className="flex lg:justify-end justify-center mt-8">
                             <button className="bg-white text-red-500 px-5 py-3 border border-red-500 rounded">Cancel</button>
-                            <button className="bg-[#056791] px-5 py-3 text-white rounded ml-8">Register Complaint</button>
+                            <button className="bg-[#056791] px-5 py-3 text-white rounded ml-8" onClick={() => navigate("/complaint-type")}>Register Complaint</button>
                         </div>
                     </section>
                 </div>
