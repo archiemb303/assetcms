@@ -24,8 +24,8 @@ export default function Home() {
                         <p className=" mt-3 ">You can review all information entered before submitting your complaint to CMS. Once the complaint is submitted, CMS will review all information and respond to your complaint.</p>
                         <p className=" mt-3 ">Click the Register Complaint button below to begin filing your complaint.</p>
                         <div className="flex lg:justify-end justify-center mt-8">
-                            <button className="bg-white text-red-500 px-5 py-3 border border-red-500 rounded">Cancel</button>
-                            <button className="bg-[#056791] px-5 py-3 text-white rounded ml-8" onClick={() => navigate("/complaint-type")}>Register Complaint</button>
+                            <button className="bg-white text-red-500 px-5 py-3 border border-red-500 rounded cursor-pointer" onClick={() => navigate("/")}>Cancel</button>
+                            <button className="bg-[#056791] px-5 py-3 text-white rounded ml-8 cursor-pointer" onClick={() => navigate("/complaint-type")}>Register Complaint</button>
                         </div>
                     </section>
                 </div>
