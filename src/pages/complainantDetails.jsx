@@ -151,47 +151,53 @@ export default function ComplaintType() {
         return formatted;
     };
 
+    const steps = [
+        { label: "Complaint Type", status: "completed" },
+        { label: "Complainant Details", status: "active" },
+        { label: "FAE Details", status: "upcoming" },
+        { label: "Complaint Details", status: "upcoming" },
+        { label: "Review Complaint", status: "upcoming" },
+        { label: "Submitted", status: "upcoming" },
+    ];
+
     return (
         <>
             <main className="w-full lg:max-w-[80%] mx-auto">
                 <div className="section-container py-5 px-5 ">
                     <section id="content" className="section ">
-                        <h1 className="text-2xl lg:text-2xl font-medium text-[#056791] mb-2">Complainant Details</h1>
-                        <div className="stepper lg:gap-37 relative flex gap-10 mb-5 before:absolute before:left-0 before:top-2/4 before:h-px lg:before:w-full before:w-11/12 before:-translate-y-2/4 before:bg-gray-400 before:content-[''] sm:gap-16 md:gap-20">
-                            {/* Item */}
-                            <div className="stepper-item z-1 relative rounded-full border border-solid border-[#056791] bg-white p-0.5">
-                                <span className="relative flex size-6 items-center justify-center rounded-full border border-solid border-gray-400 bg-[#056791] text-sm text-white">
-                                    <CheckIcon className="w-4 text-white" />
-                                </span>
-                            </div>
-                            {/* Item */}
-                            <div className="stepper-item z-1 relative rounded-full bg-white p-0.5">
-                                <span className="relative flex size-6 items-center justify-center rounded-full border border-solid border-gray-400 bg-[#056791] text-sm text-white">
-                                    2
-                                </span>
-                            </div>
-                            {/* Item */}
-                            <div className="stepper-item z-1 relative rounded-full bg-white p-0.5">
-                                <span className="relative flex size-6 items-center justify-center rounded-full border border-solid border-darkGray bg-white text-sm text-primary">
-                                    3
-                                </span>
-                            </div>
-                            <div className="stepper-item z-1 relative rounded-full bg-white p-0.5">
-                                <span className="relative flex size-6 items-center justify-center rounded-full border border-solid border-darkGray bg-white text-sm text-primary">
-                                    4
-                                </span>
-                            </div>
-                            <div className="stepper-item z-1 relative rounded-full bg-white p-0.5">
-                                <span className="relative flex size-6 items-center justify-center rounded-full border border-solid border-darkGray bg-white text-sm text-primary">
-                                    5
-                                </span>
-                            </div>
-                            <div className="stepper-item z-1 relative rounded-full bg-white p-0.5">
-                                <span className="relative flex size-6 items-center justify-center rounded-full border border-solid border-darkGray bg-white text-sm text-primary">
-                                    6
-                                </span>
-                            </div>
+                        
+                        <div className="relative flex items-center justify-between mb-10 w-full">
+                            {steps.map((step, index) => (
+                                <div key={index} className="relative flex-1 flex flex-col items-center justify-center text-center">
+                                    {/* Line between steps (not after the last one) */}
+                                    {index !== steps.length - 1 && (
+                                        <div className="absolute top-[14px] left-1/2 right-[-50%] h-px bg-gray-400 z-0" />
+                                    )}
+
+                                    {/* Circle */}
+                                    <div className="relative z-10 rounded-full bg-white p-0.5 border border-[#056791]">
+                                        <span
+                                            className={`flex size-6 items-center justify-center rounded-full border text-
+                ${step.status === "completed"
+                                                    ? "border-gray-400 bg-[#056791] text-white"
+                                                    : step.status === "active"
+                                                        ? "border-gray-400 bg-[#056791] text-white"
+                                                        : "border-darkGray bg-white text-[#056791]"
+                                                }
+              `}
+                                        >
+                                            {step.status === "completed" ? <CheckIcon className="w-4 h-4" /> : index + 1}
+                                        </span>
+                                    </div>
+
+                                    {/* Label below */}
+                                    <span className="mt-2 text-xs text-[#056791] px-1 truncate w-[60px] text-center sm:w-auto sm:whitespace-normal">
+                                        {step.label}
+                                    </span>
+                                </div>
+                            ))}
                         </div>
+                        <h1 className="text-2xl lg:text-2xl font-medium text-[#056791] mb-2">Complainant Details</h1>
 
                         <Form.Root onSubmit={handleSubmit}>
                             {/* Anonymous Radio Group */}
@@ -677,7 +683,7 @@ export default function ComplaintType() {
 
                             <div className="flex lg:justify-end justify-center mt-6 lg:w-6/12">
                                 <button className="border border-[#056791] px-5 py-3 text-[#056791] cursor-pointer rounded" onClick={() => navigate("/complaint-type")}>Previous</button>
-                                <button className="bg-[#056791] px-5 py-3 text-white cursor-pointer rounded ml-8" onClick={(e) => handleSubmit(e)}>Register Complainant Details</button>
+                                <button className="bg-[#056791] px-5 py-3 text-white cursor-pointer rounded ml-8" onClick={(e) => handleSubmit(e)}>Next - Information of Filed Against Entity</button>
                             </div>
                         </Form.Root>
                     </section>
