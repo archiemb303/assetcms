@@ -10,7 +10,7 @@ export default function AppRouter() {
     <Router>
         <Navbar/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/assetcms" element={<Home />} />
         <Route path="/complaint-type" element={<ComplaintType />} />
         <Route path="/complainant-details" element={<ComplainantDetails />} />
       </Routes>
