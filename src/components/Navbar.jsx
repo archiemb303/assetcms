@@ -28,7 +28,7 @@ export default function Navbar() {
                             className={`lg:flex lg:gap-6 absolute z-2 lg:relative bg-[#056791] w-full lg:w-auto left-0 transition-all duration-300 ease-in-out 
                         ${isOpen ? "top-40 opacity-100 visible" : "top-[-300px] opacity-0 invisible lg:opacity-100 lg:visible lg:top-0"}`}
                         >
-                            <li className="p-3 lg:p-0"><a href="/">Home</a></li>
+                            <li className="p-3 lg:p-0"><a href="/assetcms">Home</a></li>
                             <li className="p-3 lg:p-0">
                                 <a
                                     href="https://asett.cms.gov/ASETT_ST_CMP_About"

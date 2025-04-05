@@ -6,7 +6,7 @@ export default function Footer() {
         <p className="text-sm">&copy; 2025 My Website. All rights reserved.</p>
 
         <ul className="flex gap-8 mt-2 md:mt-0">
-          <li><a href="/" className="hover:text-gray-300">Home</a></li>
+          <li><a href="/assetcms" className="hover:text-gray-300">Home</a></li>
           <li><a href="https://asett.cms.gov/ASETT_ST_CMP_PrivacyPolicy"
             target="_blank" className="hover:text-gray-300">Privacy Policy</a></li>
           <li><a href="https://asett.cms.gov/ASETT_ST_CMP_SecurityPolicy"

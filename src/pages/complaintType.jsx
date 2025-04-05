@@ -114,7 +114,7 @@ export default function ComplaintType() {
                         {error && <p className="text-red-600 mt-2">{error}</p>}
 
                         <div className="flex lg:justify-end justify-center mt-6 w-full">
-                            <button className="border border-[#056791] px-5 py-3 text-[#056791] rounded cursor-pointer" onClick={() => navigate("/")}>Previous</button>
+                            <button className="border border-[#056791] px-5 py-3 text-[#056791] rounded cursor-pointer" onClick={() => navigate("/assetcms")}>Previous</button>
                             <button className="bg-[#056791] px-5 py-3 text-white rounded ml-8 cursor-pointer" onClick={handleNext}>Next - Complainant Details</button>
                         </div>
                     </section>
