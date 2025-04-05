@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     return (
         <header className="header bg-white">
@@ -40,20 +41,41 @@ export default function Navbar() {
                             </li>
                             <li className="p-3 lg:p-0"><a href="https://asett.cms.gov/ASETT_ST_CMP_ContactUs"
                                 target="_blank">Contact Us</a></li>
-                            <li className="relative group p-3 lg:p-0">
-                                <a href="#support" className="inline-flex items-center gap-1">
+                            <li className="relative p-3 lg:p-0">
+                                <button
+                                    onClick={() => {
+                                        if (window.innerWidth < 1024) {
+                                            setIsDropdownOpen(!isDropdownOpen);
+                                        }
+                                    }}
+                                    className="inline-flex items-center gap-1 w-full focus:outline-none"
+                                >
                                     Support <ChevronDown className="size-4" />
-                                </a>
+                                </button>
+
                                 {/* Dropdown Menu */}
-                                <ul className="absolute left-0 mt-2 w-40 border border-solid border-black bg-white text-[#056791] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                                    <li className="p-2 hover:bg-[#056791] hover:text-white"><a href="https://asett.cms.gov/ASETT_ST_CMP_DirectoryPage"
-                                        target="_blank">ASETT glossary</a></li>
-                                    <li className="p-2 hover:bg-[#056791] hover:text-white"><a href="https://asett.cms.gov/ASETT_ST_CMP_FAQ"
-                                        target="_blank">Frequently Asked Questions</a></li>
-                                    <li className="p-2 hover:bg-[#056791] hover:text-white"><a href="https://asett.cms.gov/ASETT_ST_CMP_UserManual"
-                                        target="_blank">User Manual</a></li>
+                                <ul
+                                    className={`
+                                    mt-2 w-full lg:w-40 bg-white text-[#056791] border border-black
+                                      ${isDropdownOpen ? "block" : "hidden"}
+                                    lg:absolute lg:left-0 lg:mt-2 lg:block
+                                    lg:opacity-0 lg:invisible lg:group-hover:opacity-100 lg:group-hover:visible
+                            `}
+                                >
+                                    <li className="p-2 hover:bg-[#056791] hover:text-white">
+                                        <a href="https://asett.cms.gov/ASETT_ST_CMP_DirectoryPage" target="_blank" rel="noopener noreferrer">ASETT Glossary</a>
+                                    </li>
+                                    <li className="p-2 hover:bg-[#056791] hover:text-white">
+                                        <a href="https://asett.cms.gov/ASETT_ST_CMP_FAQ" target="_blank" rel="noopener noreferrer">FAQs</a>
+                                    </li>
+                                    <li className="p-2 hover:bg-[#056791] hover:text-white">
+                                        <a href="https://asett.cms.gov/ASETT_ST_CMP_UserManual" target="_blank" rel="noopener noreferrer">User Manual</a>
+                                    </li>
                                 </ul>
                             </li>
+
+
+
                         </ul>
                     </div>
                     <ul className=" flex gap-6">

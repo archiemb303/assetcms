@@ -30,8 +30,8 @@ export default function ComplainantForm({ isModalOpen, setIsModalOpen, formData 
         <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen} >
             <Dialog.Portal className="p-5">
                 <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-                <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-6 px-6 bg-white rounded-lg shadow-lg w-11/12  max-w-md" >
-                    <Dialog.Title className="text-xl font-bold text-[#056791] mb-4">
+                <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg w-[95vw] max-w-[90vw] sm:max-w-md px-4 py-5 sm:px-6">
+                <Dialog.Title className="text-xl font-bold text-[#056791] mb-4">
                         Complaint Details Summary
                     </Dialog.Title>
                     <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2">

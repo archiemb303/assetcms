@@ -12,7 +12,7 @@ export default function Home() {
                         <p className="mt-2">
                             The following is the list of steps you will take in order to file a complaint regarding HIPAA Transactions and Code Sets, Unique
                             Identifiers, and/or Operating Rules. If you wish to file a Health Insurance Privacy complaint, please visit the
-                            <u>{" "}<a className="underline text-[#056791]" href="http://www.hhs.gov/ocr/privacy/hipaa/complaints/index.html" title="External link to file complaint process of the Office for Civil Rights(OCR).">Office for Civil Rights (OCR)</a>
+                            <u>{" "}<a className="underline text-[#056791]" target="_blank" href="http://www.hhs.gov/ocr/privacy/hipaa/complaints/index.html" title="External link to file complaint process of the Office for Civil Rights(OCR).">Office for Civil Rights (OCR)</a>
                             </u>{" "}
                             website.
                         </p>
