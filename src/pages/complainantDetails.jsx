@@ -7,6 +7,7 @@ import { useState } from "react";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import ComplainantForm from "../components/complainantForm";
+import Stepper from "../components/stepper";
 
 export default function ComplaintType() {
 
@@ -166,37 +167,7 @@ export default function ComplaintType() {
                 <div className="section-container py-5 px-5 ">
                     <section id="content" className="section ">
                         
-                        <div className="relative flex items-center justify-between mb-10 w-full">
-                            {steps.map((step, index) => (
-                                <div key={index} className="relative flex-1 flex flex-col items-center justify-center text-center">
-                                    {/* Line between steps (not after the last one) */}
-                                    {index !== steps.length - 1 && (
-                                        <div className="absolute top-[14px] left-1/2 right-[-50%] h-px bg-gray-400 z-0" />
-                                    )}
-
-                                    {/* Circle */}
-                                    <div className="relative z-10 rounded-full bg-white p-0.5 border border-[#056791]">
-                                        <span
-                                            className={`flex size-6 items-center justify-center rounded-full border text-
-                ${step.status === "completed"
-                                                    ? "border-gray-400 bg-[#056791] text-white"
-                                                    : step.status === "active"
-                                                        ? "border-gray-400 bg-[#056791] text-white"
-                                                        : "border-darkGray bg-white text-[#056791]"
-                                                }
-              `}
-                                        >
-                                            {step.status === "completed" ? <CheckIcon className="w-4 h-4" /> : index + 1}
-                                        </span>
-                                    </div>
-
-                                    {/* Label below */}
-                                    <span className="mt-2 text-xs text-[#056791] px-1 truncate w-[60px] text-center sm:w-auto sm:whitespace-normal">
-                                        {step.label}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
+                    <Stepper steps={steps} />
                         <h1 className="text-2xl lg:text-2xl font-medium text-[#056791] mb-2">Complainant Details</h1>
 
                         <Form.Root onSubmit={handleSubmit}>
@@ -211,12 +182,12 @@ export default function ComplaintType() {
                                 >
                                     <div className="mb-2.5 flex items-center text-[#056791]">
                                         <RadioGroup.Item
-                                            className="size-5 cursor-pointer rounded-full border border-solid border-primary bg-transparent shadow-none outline-none"
+                                            className="size-5 cursor-pointer rounded-full border border-solid border-[#056791] bg-transparent shadow-none outline-none"
                                             value="yes"
                                             id="anonymous-yes"
                                         >
                                             <RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-2.5 after:rounded-full after:bg-[#056791]" />                                        </RadioGroup.Item>
-                                        <label className="pl-2 text-sm" htmlFor="anonymous-yes">
+                                        <label className="pl-2 text-sm text-[#056791]" htmlFor="anonymous-yes">
                                             Yes
                                         </label>
                                     </div>
@@ -227,7 +198,7 @@ export default function ComplaintType() {
                                             id="anonymous-no"
                                         >
                                             <RadioGroup.Indicator className="relative flex size-full items-center justify-center after:block after:size-2.5 after:rounded-full after:bg-[#056791]" />                                      </RadioGroup.Item>
-                                        <label className="pl-2 text-sm" htmlFor="anonymous-no">
+                                        <label className="pl-2 text-sm text-[#056791]" htmlFor="anonymous-no">
                                             No
                                         </label>
                                     </div>
@@ -243,7 +214,7 @@ export default function ComplaintType() {
                                 )}
 
                             {/* Organization Name */}
-                            <div className="first-name mt-3">
+                            <div className="organization-name mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Organization Name<span className="text-red-500"> *</span></p>
                                 <Form.Field name="organizationName">
                                     <Form.Control asChild>
@@ -265,7 +236,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Organization Type */}
-                            <div className="first-name mt-3">
+                            <div className="organization-type mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Organization Type</p>
                                 <Select.Root
                                     value={formData.organizationType}
@@ -300,7 +271,7 @@ export default function ComplaintType() {
 
                             {/* Organization Type Other (conditionally shown) */}
                             {formData.organizationType === 'other' && (
-                                <div className="first-name mt-3">
+                                <div className="rganization-type-other mt-3">
                                     <p className="mb-2 text-[#056791]">Complainant Organization Type (Other)</p>
                                     <Form.Field name="organizationTypeOther">
                                         <Form.Control asChild>
@@ -316,7 +287,7 @@ export default function ComplaintType() {
                             )}
 
                             {/* Organization Role */}
-                            <div className="first-name mt-3">
+                            <div className="organization-role mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Organization Role</p>
                                 <Form.Field name="organizationRole">
                                     <Form.Control asChild>
@@ -331,7 +302,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Organization Contact */}
-                            <div className="first-name mt-3">
+                            <div className="organization-contact mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Organization Phone Number<span className="text-red-500"> *</span></p>
                                 <Form.Field name="organizationContact">
                                     <Form.Control asChild>
@@ -357,7 +328,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Title */}
-                            <div className="first-name mt-3">
+                            <div className="title mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Title<span className="text-red-500"> *</span></p>
                                 <Select.Root
                                     value={formData.title}
@@ -418,7 +389,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Middle Initial */}
-                            <div className="first-name mt-3">
+                            <div className="middle-name mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Middle Initial</p>
                                 <Form.Field name="middleInitial">
                                     <Form.Control asChild>
@@ -433,7 +404,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Last Name */}
-                            <div className="first-name mt-3">
+                            <div className="last-name mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Last Name<span className="text-red-500"> *</span></p>
                                 <Form.Field name="lastName">
                                     <Form.Control asChild>
@@ -455,7 +426,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Address Line 1 */}
-                            <div className="first-name mt-3">
+                            <div className="address-line1 mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Address Line 1<span className="text-red-500"> *</span></p>
                                 <Form.Field name="addressLine1">
                                     <Form.Control asChild>
@@ -477,7 +448,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Address Line 2 */}
-                            <div className="first-name mt-3">
+                            <div className="address-line2 mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Address Line 2</p>
                                 <Form.Field name="addressLine2">
                                     <Form.Control asChild>
@@ -492,7 +463,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* City */}
-                            <div className="first-name mt-3">
+                            <div className="city mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant City/Town<span className="text-red-500"> *</span></p>
                                 <Form.Field name="city">
                                     <Form.Control asChild>
@@ -514,7 +485,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* State */}
-                            <div className="first-name mt-3">
+                            <div className="state mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant State/Territory<span className="text-red-500"> *</span></p>
                                 <Select.Root
                                     value={formData.state}
@@ -552,7 +523,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Zip Code */}
-                            <div className="first-name mt-3">
+                            <div className="zip-code mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Zip Code<span className="text-red-500"> *</span></p>
                                 <div className="flex w-full lg:w-6/12 gap-2">
                                     {/* Zip Code */}
@@ -595,7 +566,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Email */}
-                            <div className="first-name mt-3">
+                            <div className="email mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Email Address<span className="text-red-500"> *</span></p>
                                 <Form.Field name="email">
                                     <Form.Control asChild>
@@ -618,7 +589,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Phone */}
-                            <div className="first-name mt-3">
+                            <div className="phone mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Contact Phone Number<span className="text-red-500"> *</span></p>
                                 <div className="flex w-full lg:w-6/12 max-w-full flex-row gap-2">
                                     {/* Phone Input */}
@@ -662,7 +633,7 @@ export default function ComplaintType() {
                             </div>
 
                             {/* Cell Phone */}
-                            <div className="first-name mt-3">
+                            <div className="cell-phone mt-3">
                                 <p className="mb-2 text-[#056791]">Complainant Cell Phone Number</p>
                                 <Form.Field name="cellPhone">
                                     <Form.Control asChild>
