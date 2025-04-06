@@ -1,12 +1,85 @@
-# React + Vite
+# ASETT CMS Complaint Submission Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React-based web application that enables users to submit complaints in a structured, step-by-step manner. The application supports masked/unmasked data handling for anonymous complainants and includes form validations, step navigation, and PDF generation.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
 
-## Expanding the ESLint configuration
+- **React**
+- **Vite** (for fast development builds)
+- **Radix UI** (for accessible UI primitives like forms, modals, radio groups, selects)
+- **Tailwind CSS**
+- **Lucide Icons**
+- **React Router DOM**
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Features
+
+- Multi-step complaint form (Stepper UI)
+- Conditional rendering based on anonymity
+- Input validations (including masking for phone numbers and ZIP code)
+- Modal preview before final submission
+- Role-based data collection (Complainant, FAE, Complaint Details)
+- Organization-specific field rendering
+- Auto-formatting for phone numbers (e.g., `(123) 456-7890`)
+- Dynamic display with masked/unmasked logic for anonymous submissions
+- Ready-to-integrate backend submission logic
+
+---
+
+## 📁 Project Structure
+
+├── components/
+│   ├── Navbar.jsx          # Dynamic step-based progress UI
+│   └── complainantForm.jsx  # Modal to show complaint summary
+|   ├── stepper.jsx          # Dynamic step-based progress UI
+│   └── footer.jsx  # Modal to show complaint summary
+│
+├── pages/
+│   └── complainantDetails.jsx            # Main app page
+|   └── complaintType.jsx
+|   └── home.jsx
+│
+├── styles/
+│   └── globals.css          # Tailwind & base styles
+│
+├── public/                  # Static assets
+├── tailwind.config.js       # Tailwind configuration
+└── README.md 
+
+---
+
+## 📝 Form Logic Highlights
+
+- **Anonymous Toggle:**
+  - If set to **Yes**, personal information will be masked in the review modal.
+  - The form handles radio group changes via `@radix-ui/react-radio-group`.
+
+- **Masked Display Example:**
+  - `John Doe` ➝ `J*** D**`
+  - `email@example.com` ➝ `e****@******.com`
+
+- **Validation Checks:**
+  - Required fields are checked on submit.
+  - Phone number must match the format: `(123) 456-7890`
+  - Email format is verified using regex.
+
+---
+
+## 📦 Installation
+
+```bash
+npm install
+# or
+yarn
+
+## 📦 Running the App
+
+npm run dev
+
+This will start the app on http://localhost:5173.
+
+
+
